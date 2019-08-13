@@ -4,7 +4,7 @@
   "Items": [
     {
       "Id": "aaeeac7a-07c7-410b-9ce3-2201bbca2196",
-      "Command": "test.tcx -t -2"
+      "Command": "test.tcx -t 12"
     },
     {
       "Id": "e37aca0c-66fb-427b-bc2a-f90635548f69",

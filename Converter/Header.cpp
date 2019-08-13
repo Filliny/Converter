@@ -286,13 +286,13 @@ void timecorr(FILE* fp, const char* filename, int tc)
 	/* File name generating for output  - can be implemented in shorter way...*/
 	char pref[11] = "corrected-";  //name prefix
 	char* nfilename = (char*)malloc(strlen(filename) + strlen(pref) + 1);
-	strcpy_s(nfilename, strlen(pref)+1, pref);
-	strcat_s(nfilename, strlen(nfilename)+ strlen(pref) +1, filename);
-	
+	strcpy_s(nfilename, strlen(pref) + 1, pref);
+	strcat_s(nfilename, strlen(nfilename) + strlen(pref) + 1, filename);
+
 
 	FILE* ftp = NULL;
 
-	
+
 	char Tm[] = "<Time>";
 	char tm[] = "<time>";
 	char* nstart = NULL;
@@ -321,21 +321,29 @@ void timecorr(FILE* fp, const char* filename, int tc)
 						pstimestr++;
 						nstart++;
 					}
-					   
+
 					pstimestr = pstimestr - 2; //shifting back pointer cos hr allways 2 digits
-									   
+
 					char hr[2];   //temporar time massive
 					for (int i = 0; i < 2; i++)  //filling massive
 					{
-						hr[i] = *(pstimestr + i);  
+						hr[i] = *(pstimestr + i);
 
 					}
 
-					int hour = (atoi(hr) + tc) % 24 ; //recalculate time -not affect day or min - hr allways go round
+					int hour = (atoi(hr) + tc) % 24; //recalculate time -not affect day or min - hr allways go round
 
 					char nhour[3];
 					_itoa_s(hour, nhour, _countof(nhour), 10);//  fall if no place for \0 , so cos ve have only 2 nums - do it siply
 					
+					if (hour < 10) 
+					{   
+						nhour[2] = nhour[1];
+						nhour[1] = nhour[0];
+						nhour[0] = '0';
+						
+					}
+
 					for (int i = 0; i < 2; i++)  //fill new time to place
 					{
 						*pstimestr = nhour[i];
@@ -356,8 +364,8 @@ void timecorr(FILE* fp, const char* filename, int tc)
 					fwrite(timestr, strlen(timestr), 1, ftp);
 					fwrite("\n", 1, 1, ftp);
 					free(timestr);
-						continue; //go take another line
-						
+					continue; //go take another line
+
 				}
 				else
 				{
@@ -369,10 +377,10 @@ void timecorr(FILE* fp, const char* filename, int tc)
 			}
 		}
 	}
-	   
+
 	fclose(ftp);
 	fclose(fp);
-	
+
 	nfilename = (char*)realloc(nfilename, 30); //cos we getting out of block somwhere ealier... we just do this)
 	free(nfilename);
 
