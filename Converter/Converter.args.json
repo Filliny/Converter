@@ -3,12 +3,12 @@
   "Id": "ed02ccb3-f51d-4df6-a7c9-cd66dd89e36b",
   "Items": [
     {
-      "Id": "e37aca0c-66fb-427b-bc2a-f90635548f69",
-      "Command": "-h"
+      "Id": "aaeeac7a-07c7-410b-9ce3-2201bbca2196",
+      "Command": "test.tcx -t -2"
     },
     {
-      "Id": "2ccd634a-2ea9-49b6-ae8b-949a0ee76e6c",
-      "Command": "Tres_pedaleros.tcx"
+      "Id": "e37aca0c-66fb-427b-bc2a-f90635548f69",
+      "Command": "-h"
     },
     {
       "Id": "df3ed0af-2833-4dde-a1b2-cc9ce667fe6e",

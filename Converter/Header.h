@@ -6,7 +6,7 @@
 
 void gpxconverter(const char *filename, FILE*);
 
-//void timecorr(const char* , int );
+void timecorr(FILE*,const char* , int );
 
 
 #endif
@@ -15,6 +15,6 @@ void gpxconverter(const char *filename, FILE*);
 
 #define gpxconv gpxconverter
 
-//#define time timecorr
+#define time timecorr
 
 #endif
